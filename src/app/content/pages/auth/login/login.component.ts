@@ -17,7 +17,8 @@ import * as objectPath from 'object-path';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-button/button-options.interface';
 import { NgForm, FormControl, Validators, FormGroup } from '@angular/forms';
-import { AuthService, FacebookLoginProvider } from 'angular-6-social-login';
+declare var FB: any;
+
 @Component({
 	selector: 'm-login',
 	templateUrl: './login.component.html',
@@ -50,21 +51,53 @@ export class LoginComponent implements OnInit, OnDestroy {
 		public authNoticeService: AuthNoticeService,
 		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
-		private socialAuthService: AuthService
 	) {
 		this.userLoginForm();
 	}
-
 	ngOnInit(): void {
 		if (!this.authNoticeService.onNoticeChanged$.getValue()) {
 			const initialNotice = `Use your account details to continue.`;
 			this.authNoticeService.setNotice(initialNotice, 'success');
 		}
+		(window as any).fbAsyncInit = function() {
+			FB.init({
+			  appId      : '383858135766611',
+			  cookie     : true,
+			  xfbml      : true,
+			  version    : 'v3.1'
+			});
+			FB.AppEvents.logPageView();
+		  };
+
+	  
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "https://connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
 	}
 
 	ngOnDestroy(): void {
 		this.authNoticeService.setNotice(null);
 	}
+
+	submitLogin(){
+        console.log("submit login to facebook");
+        FB.login((response)=>
+            {
+              console.log('submitLogin',response);
+            //   if (response.authResponse)
+            //   {
+
+			//   }
+            //    else
+            //    {
+            //    console.log('User login failed');
+            //  }
+          });
+      }
 	private userLoginForm(): void {
 		this.loginForm = new FormGroup({
 			email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
@@ -74,11 +107,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 		});
 	}
 	public async onLogin(formData): Promise<void> {
-		console.log(formData);
-		this.loading = true;
-		try {
-			this.loading = false;
-			this.loginForm.reset();
+		try{ 
+		this.loading = false;
+		this.loginForm.reset();
+		setTimeout(()=>{
+			localStorage.setItem('userInfo',JSON.stringify(formData));
+		},100)
+		this.router.navigate(['/'])
 		}
 		catch (e) {
 
@@ -95,18 +130,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 		this.actionChange.next(this.action);
 	}
 
-	public socialSignIn(socialPlatform: string) {
-		console.log(socialPlatform);
-		let socialPlatformProvider;
-		if (socialPlatform == "facebook") {
-			socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-		}
-		this.socialAuthService.signIn(socialPlatformProvider).then(
-			(userData) => {
-				console.log(socialPlatform + " sign in data : ", userData);
-				// Now sign-in with userData
-				// ...
-			}
-		);
-	}
+	// public socialSignIn(socialPlatform: string) {
+	// 	let socialPlatformProvider;
+	// 	if (socialPlatform == "facebook") {
+	// 		socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+	// 	}
+	// 	this.socialAuthService.signIn(socialPlatformProvider).then(
+	// 		(userData) => {
+	// 			console.log(socialPlatform + " sign in data : ", userData);
+	// 			// Now sign-in with userData
+	// 			// ...
+
+	// 		}
+	// 	);
+	// }
 }

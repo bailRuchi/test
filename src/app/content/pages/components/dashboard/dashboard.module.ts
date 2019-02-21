@@ -11,6 +11,7 @@ import { FormioModule } from 'angular-formio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { FormRenderComponent } from './form-render/form-render.component';
+import { FormComponent } from './form/form.component';
 // import { FormBuildrComponent } from './form-builder/form-builder.component';
 @NgModule({
 	imports: [
@@ -28,12 +29,11 @@ import { FormRenderComponent } from './form-render/form-render.component';
 		RouterModule.forChild([
 			{
 				path: '',
-				redirectTo: 'dashbord',
-				pathMatch: 'full',
+				component: DashboardComponent,
 				children: [
 					{
-						path: 'dashbord',
-						component: DashboardComponent
+						path: '',
+						component: FormComponent
 					},
 					{
 						path: 'form-render',
@@ -48,6 +48,7 @@ import { FormRenderComponent } from './form-render/form-render.component';
 	declarations: [
 		DashboardComponent,
 		FormRenderComponent,
+		FormComponent,
 	]
 })
 export class DashboardModule { }

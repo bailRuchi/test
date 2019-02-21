@@ -30,14 +30,14 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 			desc: 'Some description goes here',
 			root: true,
 			icon: 'flaticon-line-graph',
-			page: '/',
+			page: '/dashboard',
 			badge: { type: 'm-badge--danger', value: '2' },
 			translate: 'DASHBOARD',
 			submenu: [
 				{
 					title: 'Form-builder',
 					bullet: 'dot',
-					page: '/form-builder'
+					page: '/'
 				},
 				{
 					title: 'Form-render',

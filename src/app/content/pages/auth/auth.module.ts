@@ -14,20 +14,19 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { SpinnerButtonModule } from '../../partials/content/general/spinner-button/spinner-button.module';
 import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
-import { AuthService } from 'angular-6-social-login';
-export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
-      [
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("383858135766611")
-        },   
-      ]
-  );
-  return config;
-}
+// import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+// import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider, AuthService} from "angularx-social-login";
+// export function getAuthServiceConfigs() {
+//   let config = new AuthServiceConfig(
+//       [
+//         {
+//           id: FacebookLoginProvider.PROVIDER_ID,
+//           provider: new FacebookLoginProvider("383858135766611")
+//         },   
+//       ]
+//   );
+//   return config;
+// }
 @NgModule({
 	imports: [
 		CommonModule,
@@ -38,7 +37,7 @@ export function getAuthServiceConfigs() {
 		MatCheckboxModule,
 		FormsModule,
 		ReactiveFormsModule,
-		SocialLoginModule,
+		// SocialLoginModule,
 		TranslateModule.forChild(),
 		SpinnerButtonModule,
 		RouterModule.forChild([
@@ -49,10 +48,10 @@ export function getAuthServiceConfigs() {
 		])
 	],
 	providers: [
-		{
-			provide: AuthService,
-      useFactory: getAuthServiceConfigs
-		}
+		// {
+		// 	provide: AuthServiceConfig,
+    //   useFactory: getAuthServiceConfigs
+		// }
 	],
 	declarations: [
 		AuthComponent,
