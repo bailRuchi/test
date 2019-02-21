@@ -36,13 +36,13 @@
 <!--end::Form-->
 <!--begin::Options-->
 <div class="m-login__options">
-		<a (click)="submitLogin()" mat-raised-button color="primary">
+		<a (click)="submitLogin('facebook')" mat-raised-button color="primary">
 			<span>
 				<i class="fab fa-facebook-f"></i>&nbsp;
 				<span>Facebook</span>
 			</span>
 		</a>
-		<a href="javascript:;" mat-raised-button color="warn">
+		<a (click)="submitLogin('google')" mat-raised-button color="warn">
 			<span>
 				<i class="fab fa-google"></i>&nbsp;
 				<span>Google</span>

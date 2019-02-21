@@ -1,32 +1,40 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth.component';
-import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AuthComponent } from "./auth.component";
+import { LoginComponent } from "./login/login.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { RegisterComponent } from "./register/register.component";
 import {
 	MatButtonModule,
 	MatFormFieldModule,
 	MatInputModule,
 	MatCheckboxModule
-} from '@angular/material';
-import { TranslateModule } from '@ngx-translate/core';
-import { SpinnerButtonModule } from '../../partials/content/general/spinner-button/spinner-button.module';
-import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
-// import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-// import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider, AuthService} from "angularx-social-login";
-// export function getAuthServiceConfigs() {
-//   let config = new AuthServiceConfig(
-//       [
-//         {
-//           id: FacebookLoginProvider.PROVIDER_ID,
-//           provider: new FacebookLoginProvider("383858135766611")
-//         },   
-//       ]
-//   );
-//   return config;
-// }
+} from "@angular/material";
+import { TranslateModule } from "@ngx-translate/core";
+import { SpinnerButtonModule } from "../../partials/content/general/spinner-button/spinner-button.module";
+import { AuthNoticeComponent } from "./auth-notice/auth-notice.component";
+import {
+	SocialLoginModule,
+	AuthServiceConfig,
+	FacebookLoginProvider,
+	GoogleLoginProvider
+} from "angular-6-social-login";
+
+export function getAuthServiceConfigs() {
+	let config = new AuthServiceConfig([
+		{
+			id: FacebookLoginProvider.PROVIDER_ID,
+			provider: new FacebookLoginProvider("2413733225513020")
+		},
+		{
+			id: GoogleLoginProvider.PROVIDER_ID,
+			provider: new GoogleLoginProvider("Your-Google-Client-Id") // ADD ID HERE :)
+		}
+	]);
+	return config;
+}
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -37,21 +45,21 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 		MatCheckboxModule,
 		FormsModule,
 		ReactiveFormsModule,
-		// SocialLoginModule,
+		SocialLoginModule,
 		TranslateModule.forChild(),
 		SpinnerButtonModule,
 		RouterModule.forChild([
 			{
-				path: '',
+				path: "",
 				component: AuthComponent
 			}
 		])
 	],
 	providers: [
-		// {
-		// 	provide: AuthServiceConfig,
-    //   useFactory: getAuthServiceConfigs
-		// }
+		{
+			provide: AuthServiceConfig,
+			useFactory: getAuthServiceConfigs
+		}
 	],
 	declarations: [
 		AuthComponent,
@@ -60,4 +68,4 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 		AuthNoticeComponent
 	]
 })
-export class AuthModule { }
+export class AuthModule {}
