@@ -1,0 +1,45 @@
+.m-subheader {
+	padding: unset;
+}
+.btn {
+	background-color: gray;
+	border: none;
+	color: white;
+	padding: 5px 11px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 7px;
+	margin-left: 5px;
+  }
+  
+  i {
+	margin-right: 5px;
+  }
+  
+  .btn:hover {
+	background-color: RoyalBlue;
+  }
+  
+  .onActive {
+	background-color: RoyalBlue;
+  }
+  
+  #json {
+	display: none;
+  }
+  
+  .form-render {
+	all: unset;
+	margin-left: 25px;
+	border: 1px soi;
+	padding: 2px;
+	margin-bottom: 4px;
+	color: blue;
+	float: right;
+	margin-right: 15px;
+	cursor: pointer;
+  }
+  .mr-auto {
+	  margin-left: 12px;
+  }
+  

@@ -1,0 +1,13 @@
+<div class="toolbarView">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span class="pointer">Form-Render</span>
+        <i class="fa fa-arrow-left" aria-hidden="true" (click)="backClicked()">Back</i>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  
+  <div class="formRender">
+    <formio [form]="form" (submit)="onSubmit($event)"></formio>
+  </div>
+  

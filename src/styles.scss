@@ -1,0 +1,90 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+	margin: 0;
+	padding: 0;
+	text-rendering: optimizeLegibility;
+	box-sizing: border-box;
+	letter-spacing: 1px;
+}
+
+m-dashboard {
+	.form-io-altered .form-io-mobile {
+		background: url(assets/img/phone.png);
+		height: 577px;
+		background-repeat: no-repeat;
+		max-width: 414px;
+		background-size: contain;
+		position: relative;
+		margin: 0 auto;
+	}
+
+	.form-io-altered .form-io-mobile .formarea.drag-container {
+		position: relative;
+		width: 250px;
+		top: 60px;
+		left: 2px;
+		max-height: 450px;
+		overflow-y: auto;
+	}
+
+
+	.form-io-altered .form-io-mobile .formarea.drag-container::-webkit-scrollbar-thumb {
+		background: transparent;
+	}
+
+	.form-io-altered .form-io-Ipad {
+		background: url(assets/img/ipad.png);
+		height: 310px;
+		background-repeat: no-repeat;
+		max-width: 440px;
+		background-size: contain;
+		position: relative;
+		left: 20%;
+		right: 20%;
+		top: 25px;
+	}
+
+	.form-io-altered .form-io-Ipad .formarea.drag-container {
+		width: 384px;
+		top: 21px;
+		right: 0px;
+		max-width: 88%;
+		left: 25px;
+		margin: 0px;
+		max-height: 269px;
+		overflow-y: auto;
+	}
+
+	/* FormIO Icon Manipulation */
+
+	.icon-view span.formcomponent.drag-copy {
+		font-size: 0;
+		width: 33px;
+		padding: 8px;
+		display: inline-block;
+	}
+
+	.icon-view span.formcomponent.drag-copy:not(:last-child) {
+		margin-right: 3px;
+	}
+
+	.icon-view span.formcomponent.drag-copy i {
+		font-size: initial;
+	}
+
+	/* FormIO dilog Manipulation */
+	.formio-dialog.formio-dialog-theme-default {
+		padding-bottom: unset !important;
+		padding-top: unset !important;
+	}
+
+	.formio-dialog-content {
+		max-height: 80vh;
+		top: 15%;
+	}
+	.formcomponents {
+		max-width:25%
+	}
+
+}
